@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand — sampled from the SAMAMTA logo */
+  --color-forest-50: #f3f6ec;
+  --color-forest-100: #e3ebd2;
+  --color-forest-200: #c6d6a5;
+  --color-forest-500: #4d6b1f;
+  --color-forest-700: #2a4407;
+  --color-forest-800: #213605;
+  --color-forest-900: #172604;
+  --color-forest-950: #0f1a03;
+
+  --color-gold-100: #f8edcf;
+  --color-gold-200: #f0dca0;
+  --color-gold-300: #e6c463;
+  --color-gold-400: #dcae3a;
+  --color-gold-500: #c0901a;
+  --color-gold-600: #976d00;
+  --color-gold-700: #7a5800;
+
+  --color-cream: #fbf7ee;
+  --color-sand: #f4ead3;
+  --color-ink: #1d2414;
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: clip;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-gold-300);
+  color: var(--color-forest-900);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fade-up {
+    animation: none;
+  }
 }
